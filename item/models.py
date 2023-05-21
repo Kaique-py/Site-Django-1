@@ -24,3 +24,10 @@ class Item(models.Model):
     vendido = models.BooleanField(default=False)
     vendedor = models.ForeignKey(User, related_name='items', on_delete=models.CASCADE)
     data_criacao = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('nome',) #Aqui ordenamos as categorias em ordem alfabética.
+        verbose_name_plural = 'Itens'
+
+    def __str__(self):
+        return self.nome

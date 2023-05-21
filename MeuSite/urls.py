@@ -17,10 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+#Fui alertado a não fazer isto em produção realmente, apenas aqui para fins de testes!!!
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+from django.conf import settings
+from django.conf.urls.static import static
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 from core.views import index, contact
 
 urlpatterns = [
     path('', index, name='index'),
     path('contato/', contact, name='contato'),
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #Isso não deveria ser feito em ambiente de produção, apenas em desenvolvimento para fins de treinamento, em pcp. Apesar que não consegui fazer aparecer a imagem...
