@@ -7,4 +7,5 @@ app_name = 'core'
 urlpatterns = [
     path('', views.index, name='index'),
     path('contato/', views.contact, name='contato'),
+    path('cadastro/', views.cadastro, name='cadastro'),
 ]
