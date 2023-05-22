@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 #Fui alertado a não fazer isto em produção realmente, apenas aqui para fins de testes!!!
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -27,6 +27,7 @@ from core.views import index, contact
 
 urlpatterns = [
     path('', index, name='index'),
+    path('items/', include('item.urls')),
     path('contato/', contact, name='contato'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #Isso não deveria ser feito em ambiente de produção, apenas em desenvolvimento para fins de treinamento, em pcp. Apesar que não consegui fazer aparecer a imagem...
